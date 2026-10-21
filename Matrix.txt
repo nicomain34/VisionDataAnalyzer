@@ -1,0 +1,456 @@
+================================================================================
+PROJECT MATRIX: ExcelMerger (Excel Combine Tool)
+Company context: Engineering / Production / Quality / Data consolidation workflows
+Document purpose: Describe activities, manual vs automated work, time savings, systems
+Prepared for: Internal project inventory / automation ROI reporting
+================================================================================
+
+PROJECT OVERVIEW
+----------------
+Project name:          ExcelMerger
+Type:                  Desktop automation tool (Python / Tkinter / Pandas)
+Main purpose:          Search, merge, filter, review and export Excel/CSV data from
+                       folders and subfolders into one consolidated file.
+Target users:          Engineers, analysts, quality specialists, production staff,
+                       team leaders who regularly consolidate reports from many files.
+Relevant systems:      Microsoft Excel, CSV exports, shared network folders,
+                       local/shared drives, report archives (.xlsx / .xls / .xlsm / .csv)
+LLM usage:             Used during design, coding, UI/UX improvement, localization,
+                       feature definition, documentation and this Matrix preparation.
+
+
+--------------------------------------------------------------------------------
+ROW 1
+--------------------------------------------------------------------------------
+Type of activity:
+  Multi-file Excel/CSV consolidation (merge many reports into one file)
+
+Current level of work (manual):
+  User opens folder tree, finds each file one by one, copies sheets/ranges into
+  one master workbook, aligns columns manually, checks missing files, fixes
+  formatting and saves final file.
+
+Analysis time (manual):
+  45-120 minutes per task (depends on number of files/subfolders; typical 20-100 files)
+
+Automation method (ExcelMerger):
+  User selects root folder + file types (.csv/.xlsx/.xls/.xlsm). Tool recursively
+  scans all subfolders, reads files, concatenates rows into one dataset and
+  adds source file name column.
+
+Estimated analysis time (with tool):
+  2-5 minutes
+
+Time saved:
+  ~40-115 minutes per run (~85-95% reduction)
+
+Relevant system:
+  Excel / CSV / shared folder structure / report repositories
+
+Utilization Data:
+  High for weekly/monthly consolidations; estimated 5-20 runs/user/month
+  Annual saving example (1 user, 10 runs/month): ~7-19 hours/month
+
+Implementation method using LLM:
+  LLM assisted process mapping of manual merge steps, generation of recursive
+  file discovery logic, pandas merge pipeline, GUI flow and edge-case handling
+  (empty files, read errors, progress feedback).
+
+
+--------------------------------------------------------------------------------
+ROW 2
+--------------------------------------------------------------------------------
+Type of activity:
+  File discovery across deep folder structures
+
+Current level of work (manual):
+  Manual browsing of nested folders, search by extension in Windows Explorer,
+  risk of missing files in deep paths or wrongly named reports.
+
+Analysis time (manual):
+  15-40 minutes
+
+Automation method (ExcelMerger):
+  Automatic recursive scan (os.walk) with selectable extensions and progress bar.
+
+Estimated analysis time (with tool):
+  10-60 seconds
+
+Time saved:
+  ~15-39 minutes per task
+
+Relevant system:
+  Local disks / network shares / project folders
+
+Utilization Data:
+  Used in every merge; critical when archives contain many subfolders by date/line/shift
+
+Implementation method using LLM:
+  LLM helped define reliable recursive search rules, extension filters and
+  user messaging when no matching files are found.
+
+
+--------------------------------------------------------------------------------
+ROW 3
+--------------------------------------------------------------------------------
+Type of activity:
+  Sheet selection from multi-sheet Excel workbooks
+
+Current level of work (manual):
+  Open each workbook, identify correct sheet (first sheet or named sheet),
+  copy only that sheet content, repeat for every file.
+
+Analysis time (manual):
+  20-60 minutes (for large batches)
+
+Automation method (ExcelMerger):
+  Advanced Options: "First sheet" mode or "Sheet by name" mode applied to all files.
+
+Estimated analysis time (with tool):
+  1-2 minutes (set once, then automatic)
+
+Time saved:
+  ~18-58 minutes per batch
+
+Relevant system:
+  Excel workbooks with multiple sheets (production logs, quality reports, MES exports)
+
+Utilization Data:
+  Medium-High when suppliers/teams use different sheet naming conventions
+
+Implementation method using LLM:
+  LLM used to design sheet-mode UX, validation hints and bilingual explanations
+  so non-IT users can configure correctly without training.
+
+
+--------------------------------------------------------------------------------
+ROW 4
+--------------------------------------------------------------------------------
+Type of activity:
+  Column filtering / keeping only required fields
+
+Current level of work (manual):
+  After merge (or per file), user deletes unnecessary columns, reorders remaining
+  columns, checks header consistency across files.
+
+Analysis time (manual):
+  15-45 minutes
+
+Automation method (ExcelMerger):
+  User enters comma-separated column list in Advanced Options; tool keeps only
+  existing matching columns from each file.
+
+Estimated analysis time (with tool):
+  1-3 minutes
+
+Time saved:
+  ~12-42 minutes per task
+
+Relevant system:
+  Excel/CSV exports with wide schemas (many unused technical columns)
+
+Utilization Data:
+  High for standardized KPI extracts and management summaries
+
+Implementation method using LLM:
+  LLM assisted in defining optional column projection logic and user guidance
+  text (examples, hints, safe behavior when some columns are missing).
+
+
+--------------------------------------------------------------------------------
+ROW 5
+--------------------------------------------------------------------------------
+Type of activity:
+  Row-level content filtering (keep only relevant records)
+
+Current level of work (manual):
+  Apply Excel AutoFilter / Find across each file or on big merged sheet;
+  copy filtered rows; risk of inconsistent criteria and human misses.
+
+Analysis time (manual):
+  20-50 minutes
+
+Automation method (ExcelMerger):
+  Advanced Options filter by column + value (contains match), applied during read.
+
+Estimated analysis time (with tool):
+  1-3 minutes
+
+Time saved:
+  ~17-47 minutes per task
+
+Relevant system:
+  Quality status reports, year-based archives, customer/line/status datasets
+
+Utilization Data:
+  High for recurring filters (e.g., Status=Active, Year=2024, Line=A)
+
+Implementation method using LLM:
+  LLM helped specify "contains" filter semantics, empty-result handling and
+  bilingual tip texts for correct column/value usage.
+
+
+--------------------------------------------------------------------------------
+ROW 6
+--------------------------------------------------------------------------------
+Type of activity:
+  Interactive data review before final export
+
+Current level of work (manual):
+  Open merged workbook, scroll thousands of rows, visually check anomalies,
+  delete bad rows one-by-one, re-check totals.
+
+Analysis time (manual):
+  30-90 minutes
+
+Automation method (ExcelMerger):
+  Review Window after merge: table preview, live search, select/deselect rows,
+  bulk delete selected rows, then save cleaned dataset.
+
+Estimated analysis time (with tool):
+  5-15 minutes
+
+Time saved:
+  ~25-75 minutes per review cycle
+
+Relevant system:
+  Final consolidated Excel output used for reporting / audits / handoff
+
+Utilization Data:
+  High whenever data quality varies between source files
+
+Implementation method using LLM:
+  LLM used to design interactive review UX (checkbox selection, search,
+  confirmation dialogs, counters) and integrate it into post-merge workflow.
+
+
+--------------------------------------------------------------------------------
+ROW 7
+--------------------------------------------------------------------------------
+Type of activity:
+  Source traceability (know which file each row came from)
+
+Current level of work (manual):
+  User writes source file name manually or keeps separate notes; easy to lose
+  provenance after copy-paste merge.
+
+Analysis time (manual):
+  10-30 minutes extra bookkeeping + error risk
+
+Automation method (ExcelMerger):
+  Automatically inserts "File name" column for every merged row.
+
+Estimated analysis time (with tool):
+  0 minutes (automatic)
+
+Time saved:
+  ~10-30 minutes + reduced rework from wrong source attribution
+
+Relevant system:
+  Audit trails, quality investigations, supplier/file-level root-cause analysis
+
+Utilization Data:
+  Always-on feature; valuable for audits and discrepancy checks
+
+Implementation method using LLM:
+  LLM proposed provenance column as default merge enrichment for engineering
+  traceability without extra user actions.
+
+
+--------------------------------------------------------------------------------
+ROW 8
+--------------------------------------------------------------------------------
+Type of activity:
+  Multi-format report processing (.csv / .xlsx / .xls / .xlsm)
+
+Current level of work (manual):
+  Convert formats separately, open with different tools/settings, unify manually.
+
+Analysis time (manual):
+  20-60 minutes
+
+Automation method (ExcelMerger):
+  One GUI with selectable format checkboxes; unified read pipeline for all selected types.
+
+Estimated analysis time (with tool):
+  1-2 minutes configuration + automatic processing
+
+Time saved:
+  ~18-58 minutes per mixed-format batch
+
+Relevant system:
+  Legacy Excel (.xls), modern Excel (.xlsx/.xlsm), CSV machine exports
+
+Utilization Data:
+  High in environments with mixed historical and new report formats
+
+Implementation method using LLM:
+  LLM assisted in designing format selection UI and robust multi-reader logic
+  with clear user warnings for unsupported/failed files.
+
+
+--------------------------------------------------------------------------------
+ROW 9
+--------------------------------------------------------------------------------
+Type of activity:
+  Progress monitoring and error handling during batch merge
+
+Current level of work (manual):
+  No clear progress; failures noticed late; hard to know which file broke the process.
+
+Analysis time (manual):
+  Extra 15-40 minutes troubleshooting / redoing work
+
+Automation method (ExcelMerger):
+  Progress bar, status messages (file X of Y), per-file error dialogs, continue-on-error
+  for remaining files where possible.
+
+Estimated analysis time (with tool):
+  Near real-time feedback; troubleshooting reduced to minutes
+
+Time saved:
+  ~15-40 minutes per problematic batch + fewer full restarts
+
+Relevant system:
+  Desktop app runtime / local processing pipeline
+
+Utilization Data:
+  Critical for large folders and unstable source files
+
+Implementation method using LLM:
+  LLM used to implement threaded merge, UI state locking, progress updates and
+  bilingual error messages.
+
+
+--------------------------------------------------------------------------------
+ROW 10
+--------------------------------------------------------------------------------
+Type of activity:
+  Localization / bilingual operation for mixed teams (EN/PL)
+
+Current level of work (manual):
+  English-only tools create misunderstanding; extra time for guidance and support.
+
+Analysis time (manual):
+  Support overhead: 10-20 minutes per new user / per unclear step
+
+Automation method (ExcelMerger):
+  Built-in language switch (English / Polski) for all labels, hints and messages.
+
+Estimated analysis time (with tool):
+  Immediate language switch; minimal onboarding friction
+
+Time saved:
+  ~10-20 minutes onboarding per new user + fewer support tickets
+
+Relevant system:
+  Internal desktop tool for multinational engineering teams
+
+Utilization Data:
+  High for Polish/English production sites and shared teams
+
+Implementation method using LLM:
+  LLM generated full bilingual dictionary, UI tip texts and consistent wording
+  for advanced options and review window.
+
+
+--------------------------------------------------------------------------------
+ROW 11
+--------------------------------------------------------------------------------
+Type of activity:
+  Final export of cleaned merged dataset
+
+Current level of work (manual):
+  Save As / copy between workbooks / risk of overwriting source files or
+  exporting incomplete filtered data.
+
+Analysis time (manual):
+  5-15 minutes (plus rework if wrong version saved)
+
+Automation method (ExcelMerger):
+  Dedicated Save step after interactive review; exports current cleaned dataframe
+  to .xlsx via Save dialog.
+
+Estimated analysis time (with tool):
+  30-60 seconds
+
+Time saved:
+  ~4-14 minutes + lower error rate on final deliverable
+
+Relevant system:
+  Excel output for reporting, sharing, uploading to next process step
+
+Utilization Data:
+  Used at end of every successful merge/review cycle
+
+Implementation method using LLM:
+  LLM helped separate merge -> review -> save stages so users validate data
+  before committing the final file.
+
+
+================================================================================
+SUMMARY ROI (ESTIMATED)
+================================================================================
+Typical end-to-end manual consolidation (find + merge + filter + clean + save):
+  1.5 - 4.0 hours
+
+Typical end-to-end with ExcelMerger:
+  10 - 25 minutes
+
+Estimated time saved per full cycle:
+  ~1.3 - 3.5 hours (~80-90%+)
+
+Example annual impact (conservative):
+  1 engineer x 8 consolidations/month x 2.0 hours saved = ~192 hours/year
+  5 engineers with same usage = ~960 hours/year
+
+Additional non-time benefits:
+  - Fewer missed files in deep folders
+  - Better source traceability (File name column)
+  - Lower risk of wrong sheet/column/filter mistakes
+  - Interactive quality control before export
+  - Faster onboarding via EN/PL interface
+
+
+================================================================================
+IMPLEMENTATION METHOD USING LLM (PROJECT-LEVEL)
+================================================================================
+1) Process discovery:
+   LLM used to decompose manual Excel consolidation into discrete activities
+   and define automation opportunities.
+
+2) Solution design:
+   LLM helped design GUI architecture (folder select, format filters, advanced
+   options, merge progress, interactive review, save).
+
+3) Code generation & iteration:
+   LLM-assisted Python implementation (Tkinter GUI, pandas processing, threading,
+   bilingual strings, review window interactions).
+
+4) UX hardening:
+   LLM used to write clear hints, confirmation dialogs and status messages for
+   non-developer users.
+
+5) Packaging readiness:
+   Project built as desktop executable workflow (PyInstaller distribution path
+   already present in repository).
+
+6) Documentation / Matrix:
+   This Matrix itself prepared with LLM to map each feature to business value,
+   systems and estimated time savings.
+
+
+================================================================================
+NOTES / ASSUMPTIONS
+================================================================================
+- Time estimates are engineering judgment based on typical 20-100 file batches.
+- Actual savings depend on folder depth, file quality, schema consistency and
+  how often users run consolidations.
+- Values can be calibrated with real stopwatch measurements from pilot users.
+- Tool is complementary to Excel: it accelerates preparation of clean consolidated
+  datasets that are later used in Excel/reporting systems.
+
+
+================================================================================
+END OF MATRIX
+================================================================================

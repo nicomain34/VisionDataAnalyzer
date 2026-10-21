@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0d12;
+  --color-sidebar: #0e1117;
+  --color-card: #161a23;
+  --color-elevated: #1a1f2a;
+  --color-border: #2a3140;
+  --color-primary: #1683ff;
+  --color-primary-hover: #3b97ff;
+  --color-text: #f5f7fa;
+  --color-secondary: #94a3b8;
+  --color-success: #35c759;
+  --color-warning: #ffb020;
+  --color-error: #ff4d5f;
+  --font-sans: "Segoe UI", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2f3642;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+input[type="checkbox"].em-check {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #4b5568;
+  border-radius: 3px;
+  background: transparent;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+input[type="checkbox"].em-check:checked {
+  background: #1683ff;
+  border-color: #1683ff;
+}
+
+input[type="checkbox"].em-check:checked::after {
+  content: "";
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+@keyframes em-progress {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+
+input[type="range"].em-range {
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: #2a3140;
+  outline: none;
+}
+
+input[type="range"].em-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1683ff;
+  cursor: pointer;
+  border: 2px solid #0b0d12;
+}
